@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.persistence.ClientsDao">
+
+    <resultMap id="ClientDtoResultMap" type="com.example.demo.models.ClientDto" autoMapping="true">
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="createdByUserId" column="created_by_user_id"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO clients (
+            first_name,
+            last_name,
+            username,
+            email,
+            address,
+            country,
+            created_by_user_id
+        )
+        VALUES (
+            #{firstName},
+            #{lastName},
+            #{username},
+            #{email},
+            #{address},
+            #{country},
+            #{createdByUserId}
+        );
+    </insert>
+
+    <update id="update">
+        UPDATE clients
+        SET first_name              = #{firstName},
+            last_name               = #{lastName},
+            username                = #{username},
+            email                   = #{email},
+            address                 = #{address},
+            country                 = #{country},
+            created_by_user_id      = #{createdByUserId}
+        WHERE id = #{id};
+    </update>
+
+    <delete id="delete">
+        DELETE FROM clients
+        WHERE id = #{clientId};
+    </delete>
+
+    <select id="findUserClients"  resultMap="ClientDtoResultMap">
+        SELECT *
+        FROM clients
+        WHERE created_by_user_id = #{userId};
+    </select>
+
+    <select id="findById"  resultMap="ClientDtoResultMap">
+        SELECT *
+        FROM clients
+        WHERE id = #{id};
+    </select>
+
+</mapper>

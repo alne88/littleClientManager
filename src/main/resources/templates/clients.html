@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Client list</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Clients</h2>
+    </div>
+
+    <div class="row">
+        <a href="client/add" class="btn btn-primary">Add client</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Username</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Address</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clients}">
+                <th th:text="${client.id}" scope="row"/>
+                <td th:text="${client.firstName}"/>
+                <td th:text="${client.lastName}"/>
+                <td th:text="${client.username}"/>
+                <td th:text="${client.email}"/>
+                <td th:text="${client.address}"/>
+                <td>
+                    <a th:href="@{|/client/${client.id}/edit|}">Edit</a>
+                    <a th:href="@{|/client/${client.id}/delete|}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/logout" class="btn btn-secondary">Logout</a>
+    </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2018 Company Name</p>
+</footer>
+</div>
+</body>
+</html>

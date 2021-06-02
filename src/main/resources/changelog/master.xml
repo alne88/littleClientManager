@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+                   logicalFilePath="changelog/master.xml">
+
+
+    <changeSet id="20210106-create-tables" author="system">
+        <sqlFile path="schema.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="20210106-create_new_users" author="system">
+        <sql>
+            INSERT INTO users
+                (username, password, role)
+            VALUES
+                ('admin', 'admin', 'ROLE_ADMIN'),
+                ('Micky', 'Mouse', 'ROLE_USER'),
+                ('Bugs', 'Bunny', 'ROLE_USER');
+        </sql>
+    </changeSet>
+
+    <changeSet id="20210106-insert-lookup-values-countries" author="system">
+        <sql>
+            INSERT INTO lookup_values
+                (code, value)
+            VALUES
+                ('COUNTRY', 'Estonia'),
+                ('COUNTRY', 'Latvia'),
+                ('COUNTRY', 'Lithuania'),
+                ('COUNTRY', 'Finland'),
+                ('COUNTRY', 'Sweden');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias alias="ClientDto" type="com.example.demo.models.ClientDto"/>
+        <typeAlias alias="UserDto" type="com.example.demo.models.UserDto"/>
+        <typeAlias alias="LookupValueDto" type="com.example.demo.models.LookupValueDto"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mapper/ClientsMapper.xml"/>
+        <mapper resource="mapper/LookupValuesMapper.xml"/>
+        <mapper resource="mapper/UsersMapper.xml"/>
+    </mappers>
+</configuration>
